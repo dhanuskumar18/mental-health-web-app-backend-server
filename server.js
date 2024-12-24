@@ -3,9 +3,11 @@ const app = express();
 const mongoose = require('mongoose');
 const routes = require('./routes/index');
 const cors=require("cors")
+const path=require("path")
 const cron = require("node-cron");
 const CheckIn = require('./models/CheckIn');
-require("dotenv").config();
+const dotenv=require("dotenv")
+dotenv.config({path:path.join(__dirname,"config.env")})
 // Schedule a job to run every hour
 app.use(cors())
 mongoose.connect(process.env.MONGO_URL).then(() => {
